@@ -1,6 +1,6 @@
 {
-  "name": "Zen Gomoku AI",
-  "description": "A polished AI-powered Gomoku (Omok) game with a technical aesthetic and intelligent scoring engine.",
+  "name": "젠 오목 AI",
+  "description": "세련된 디자인과 지능적인 점수 엔진을 탑재한 AI 기반 오목 게임입니다.",
   "requestFramePermissions": [],
   "majorCapabilities": []
 }

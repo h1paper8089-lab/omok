@@ -121,9 +121,11 @@ const GomokuBoard: React.FC<BoardProps> = ({ board, onMove, currentPlayer, disab
     if (!canvas) return null;
 
     const rect = canvas.getBoundingClientRect();
+    if (!rect.width || !rect.height) return null;
+
     let clientX, clientY;
     
-    if ('touches' in e.nativeEvent) {
+    if ('touches' in e.nativeEvent && e.nativeEvent.touches.length > 0) {
       clientX = e.nativeEvent.touches[0].clientX;
       clientY = e.nativeEvent.touches[0].clientY;
     } else {
@@ -134,11 +136,12 @@ const GomokuBoard: React.FC<BoardProps> = ({ board, onMove, currentPlayer, disab
     const x = clientX - rect.left;
     const y = clientY - rect.top;
 
-    const scale = canvas.width / rect.width;
+    const scaleX = canvas.width / rect.width;
+    const scaleY = canvas.height / rect.height;
     const cellSize = canvas.width / (BOARD_SIZE + 1);
 
-    const boardX = Math.round((x * scale) / cellSize) - 1;
-    const boardY = Math.round((y * scale) / cellSize) - 1;
+    const boardX = Math.round((x * scaleX) / cellSize) - 1;
+    const boardY = Math.round((y * scaleY) / cellSize) - 1;
 
     if (boardX >= 0 && boardX < BOARD_SIZE && boardY >= 0 && boardY < BOARD_SIZE) {
       return { x: boardX, y: boardY };
