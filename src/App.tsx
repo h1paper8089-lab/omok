@@ -65,7 +65,9 @@ export default function App() {
       setIsAIThinking(true);
       const timer = setTimeout(() => {
         const move = findBestMove(board);
-        placeStone(move.x, move.y);
+        if (move) {
+          placeStone(move.x, move.y);
+        }
         setIsAIThinking(false);
       }, 700);
       return () => clearTimeout(timer);

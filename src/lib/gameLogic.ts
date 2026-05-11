@@ -39,7 +39,7 @@ export function checkWin(board: Player[][], x: number, y: number, player: Player
   return false;
 }
 
-export function findBestMove(board: Player[][]): Move {
+export function findBestMove(board: Player[][]): Move | null {
   let bestScore = -Infinity;
   let bestMove: Move | null = null;
 
@@ -52,6 +52,7 @@ export function findBestMove(board: Player[][]): Move {
     }
   }
 
+  if (emptyCells.length === 0) return null;
   if (emptyCells.length === BOARD_SIZE * BOARD_SIZE) {
     return { x: 7, y: 7 }; // Start at center
   }
@@ -70,7 +71,7 @@ export function findBestMove(board: Player[][]): Move {
     }
   }
 
-  return bestMove || emptyCells[Math.floor(Math.random() * emptyCells.length)];
+  return bestMove || emptyCells[Math.floor(Math.random() * emptyCells.length)] || null;
 }
 
 function calculateScoreForCell(board: Player[][], x: number, y: number, player: Player, opponent: Player): number {
