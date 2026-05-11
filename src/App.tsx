@@ -12,7 +12,7 @@ import { Player, Move } from './types';
 import { BOARD_SIZE } from './constants';
 import { checkWin, findBestMove } from './lib/gameLogic';
 import confetti from 'canvas-confetti';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence } from 'motion/react';
 
 export default function App() {
   const [board, setBoard] = useState<Player[][]>(() => 

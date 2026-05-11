@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 import { Player } from '../types';
 import { Trophy, RotateCcw } from 'lucide-react';
 
